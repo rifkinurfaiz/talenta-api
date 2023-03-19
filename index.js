@@ -10,12 +10,12 @@ const prepForm = (obj) => {
   const longEncoded = codec.encoder(codec.encoder(long, "base64"), "rot13");
   const latEncoded = codec.encoder(codec.encoder(lat, "base64"), "rot13");
 
-  data.append("longitude", longEncoded);
   data.append("latitude", latEncoded);
+  data.append("longitude", longEncoded);
   data.append("status", status);
   data.append("description", desc);
 
-  const config = {
+  config = {
     method: "post",
     url: "https://hr.talenta.co/api/web/live-attendance/request",
     headers: {
