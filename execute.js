@@ -1,6 +1,7 @@
 const axios = require("axios");
 const talenta = require("./index");
-const { cookiesTalenta, longitude, latitude } = require("./config");
+const { longitude, latitude } = require("./config");
+const login = require("./login");
 
 (async () => {
   const today = new Date();
@@ -28,9 +29,11 @@ const { cookiesTalenta, longitude, latitude } = require("./config");
       console.log(error);
     });
 
+  const cookiePHPSESSID = await login.loginAndGetPHPSESSID();
+
   if (process.argv[2] == "clockin") {
-    console.log(await talenta.clockIn({ lat: latitude, long: longitude, cookies: cookiesTalenta, desc: "Good morning guys!" }));
+    console.log(await talenta.clockIn({ lat: latitude, long: longitude, cookies: cookiePHPSESSID, desc: "Good morning guys!" }));
   } else if (process.argv[2] == "clockout") {
-    console.log(await talenta.clockOut({ lat: latitude, long: longitude, cookies: cookiesTalenta, desc: "Balik dulu gengs" }));
+    console.log(await talenta.clockOut({ lat: latitude, long: longitude, cookies: cookiePHPSESSID, desc: "Balik dulu gengs" }));
   }
 })();

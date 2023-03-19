@@ -7,8 +7,8 @@ const prepForm = (obj) => {
   const data = new FormData();
   const status = isCheckOut ? "checkout" : "checkin";
 
-  const longEncoded = codec.encoder(codec.encoder(long, "base64"), "rot13");
   const latEncoded = codec.encoder(codec.encoder(lat, "base64"), "rot13");
+  const longEncoded = codec.encoder(codec.encoder(long, "base64"), "rot13");
 
   data.append("latitude", latEncoded);
   data.append("longitude", longEncoded);
