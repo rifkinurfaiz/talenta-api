@@ -32,8 +32,8 @@ const login = require("./login");
   const cookiePHPSESSID = await login.loginAndGetPHPSESSID();
 
   if (process.argv[2] == "clockin") {
-    console.log(await talenta.clockIn({ lat: latitude, long: longitude, cookies: cookiePHPSESSID, desc: "Good morning guys!" }));
+    console.log(await talenta.clockIn({ lat: latitude, long: longitude, cookies: cookiePHPSESSID, desc: "" }));
   } else if (process.argv[2] == "clockout") {
-    console.log(await talenta.clockOut({ lat: latitude, long: longitude, cookies: cookiePHPSESSID, desc: "Balik dulu gengs" }));
+    console.log(await talenta.clockOut({ lat: latitude, long: longitude, cookies: cookiePHPSESSID, desc: "" }));
   }
 })();
